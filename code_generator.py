@@ -38,7 +38,10 @@ def generate_asm(tac_code:dict[int:str]):
     for no,line in tac_code.items():
         tokens=line.split(' ')
         if len(tokens)==3:
-            header.append(f"{tokens[0]}: DW 0")
+            if tokens[2][0]!='t':
+                header.append(f"{tokens[0]}: DW {tokens[2]}")
+            else:
+                header.append(f"{tokens[0]}: DW 0")
         elif len(tokens)==5 and tokens[1]=='=':
             var=tokens[0]
             header.append(f"{var}: DW 0")
