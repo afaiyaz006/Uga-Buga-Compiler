@@ -15,7 +15,9 @@ names = {}
 
 
 def p_statement_assign(p):
-    'statement : NAME "=" expression'
+    '''statement :  NAME "=" expression
+                  | NAME HOCCHE expression
+                   '''
     
     p[0]=('EQUAL',p[1],p[3])
     names[p[1]] = p[3]

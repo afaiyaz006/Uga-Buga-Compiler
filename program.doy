@@ -1,5 +1,7 @@
-a=10
-b=20
-c=a+b
-d=c*3
-e=d/3
+a HOCCHE 10
+b HOCCHE 30
+c HOCCHE a+b
+x HOCCHE 10
+y HOCCHE (10*2)+(4/3)+5
+z HOCCHE 40-y
+p HOCCHE y+z

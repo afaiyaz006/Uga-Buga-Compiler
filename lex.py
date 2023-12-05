@@ -1,6 +1,6 @@
 import ply.lex as lex
 tokens = (
-    'NAME', 'NUMBER','GTE','LTE','EQ','NEQ','OR','AND','GT','LT'
+    'NAME', 'NUMBER','GTE','LTE','EQ','NEQ','OR','AND','GT','LT','HOCCHE'
 )
 
 literals = ['=', '+', '-', '*', '/', '(', ')','&','|']
@@ -15,6 +15,10 @@ t_NEQ='!='
 # Tokens
 
 t_NAME = r'[a-zA-Z_][a-zA-Z0-9_]*'
+
+def t_HOCCHE(t):
+    r'HOCCHE'
+    return t
 
 def t_NUMBER(t):
     r'\d+'
