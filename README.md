@@ -4,7 +4,7 @@ A simple compiler that converts mathematical expression like this:
 ```
 a=10
 b=20
-c=10+20*3+(10-b)
+c=10+(20*3)+10-b
 ```
 Into 8086 assembly code like this:
 ```
