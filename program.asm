@@ -1,4 +1,4 @@
-{1: 't1 = 10', 2: 't2 = 20', 3: 't3 = 10 + 20', 4: 't4 = 10 - 20', 5: 't5 = 3 + t4', 6: 't6 = t3 * t5', 7: 't7 = t6'}
+{1: 't1 = 10', 2: 't2 = 20', 3: 't3 = 20 * 3', 4: 't4 = 10 + t3', 5: 't5 = t4 + 10', 6: 't6 = t5 - 20', 7: 't7 = t6'}
 .MODEL SMALL
 .STACK 100H
 .DATA
@@ -14,18 +14,18 @@ MAIN PROC
 MOV AX,@DATA
 MOV DS,AX
 MOV AX,0
-MOV AL,10
-ADD AL,20
+MOV AL,20
+MOV BL,3
+MUL BL
 MOV t3,AL
 MOV AL,10
-SUB AL,20
+ADD AL,t3
 MOV t4,AL
-MOV AL,3
-ADD AL,t4
+MOV AL,t4
+ADD AL,10
 MOV t5,AL
-MOV AL,t3
-MOV BL,t5
-MUL BL
+MOV AL,t5
+SUB AL,20
 MOV t6,AL
 MAIN ENDP
 END MAIN
