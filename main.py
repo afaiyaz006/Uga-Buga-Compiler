@@ -17,5 +17,5 @@ while True:
 
  # tac generation
 tac_code=generate_tac.tac_code
-print(tac_code)  
+print(f";{tac_code}")  
 print(generate_asm(tac_code)) # assembly

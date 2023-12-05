@@ -12,7 +12,7 @@ def generate_tac(node):
        
         generate_tac.temp_counter += 1
             
-        if op=="EQUAL":
+        if op=="EQUAX":
             #print(f"{temp} = {right}")
             #print(f"{left} = {temp}")
             
@@ -27,72 +27,68 @@ def generate_tac(node):
         return str(node)
     
 # Generate 8086 assembly code
-def generate_asm(tac_code):
+def generate_asm(tac_code:dict[int:str]):
     header=[
-        '.MODEL SMALL',
-        '.STACK 100H',
-        '.DATA'
     ]
     body=[
-        '.CODE',
-        'MAIN PROC',
-        'MOV AX,@DATA',
-        'MOV DS,AX',
-        'MOV AX,0',
+        'start:',
     ]
     
     
     for no,line in tac_code.items():
         tokens=line.split(' ')
         if len(tokens)==3:
-           
-            header.append(f"{tokens[0]} DB {tokens[2]}")
+            header.append(f"{tokens[0]}: DW 0")
         elif len(tokens)==5 and tokens[1]=='=':
             var=tokens[0]
-            header.append(f"{var} DB 0")
+            header.append(f"{var}: DW 0")
+            if tokens[0][0]=='t':
+                tokens[0]=f'word {tokens[0]}'
+            if tokens[2][0]=='t':
+                tokens[2]=f'word {tokens[2]}'
+            if tokens[4][0]=='t':
+                tokens[4]=f'word {tokens[4]}'
             if tokens[3]=='+':
-                body.append(f"MOV AL,{tokens[2]}")
-                body.append(f"ADD AL,{tokens[4]}")
-                body.append(f"MOV {var},AL")
+                body.append(f"MOV AX,{tokens[2]}")
+                body.append(f"ADD AX,{tokens[4]}")
+                body.append(f"MOV word {var},AX")
             elif tokens[3]=='-':
-                body.append(f"MOV AL,{tokens[2]}")
-                body.append(f"SUB AL,{tokens[4]}")
-                body.append(f"MOV {var},AL")
+                body.append(f"MOV AX,{tokens[2]}")
+                body.append(f"SUB AX,{tokens[4]}")
+                body.append(f"MOV word {var},AX")
 
             elif tokens[3]=='*' or tokens[3]=='/':
-                if tokens[2][0]=='t':
-                    body.append(f"MOV AL,{tokens[2]}")
-                    body.append(f"MOV BL,{tokens[4]}")
+                if tokens[2][0]=='w':
+                    body.append(f"MOV AX,{tokens[2]}")
+                    body.append(f"MOV BX,{tokens[4]}")
                     if tokens[3]=='*':
                         body.append(f"MUL BL")
                     if tokens[3]=='/':
                         body.append(f"DIV BL")
-                    body.append(f"MOV {var},AL")
-                elif tokens[4][0]=='t':
-                    body.append(f"MOV AL,{tokens[4]}")
-                    body.append(f"MOV BL,{tokens[2]}")
+                    body.append(f"MOV word {var},AX")
+                elif tokens[4][0]=='w':
+                    body.append(f"MOV AX,{tokens[4]}")
+                    body.append(f"MOV BX,{tokens[2]}")
                     if tokens[3]=='*':
                         body.append(f"MUL BL")
                     if tokens[3]=='/':
                         body.append(f"DIV BL")
-                    body.append(f"MOV {var},AL")
+                    body.append(f"MOV word {var},AX")
                 else:
-                    body.append(f"MOV AL,{tokens[2]}")
-                    body.append(f"MOV BL,{tokens[4]}")
+                    body.append(f"MOV AX,{tokens[2]}")
+                    body.append(f"MOV BX,{tokens[4]}")
                     if tokens[3]=='*':
                         body.append(f"MUL BL")
                     if tokens[3]=='/':
                         body.append(f"DIV BL")
-                    body.append(f"MOV {var},AL")
+                    body.append(f"MOV word {var},AX")
                 
     tail=[
-        'MAIN ENDP',
-        'END MAIN'
     ]
     final=[
         "\n".join(header),
         "\n".join(body),
-        "\n".join(tail),
+       
     ]
     final="\n".join(final)
     return final
