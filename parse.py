@@ -3,8 +3,9 @@ import ply.yacc as yacc
 from lex import tokens
 from code_generator import generate_tac
 precedence = (
-    ('left', '*', '/'),
+    
     ('left', '+', '-'),
+    ('left', '/', '*'),
     ('right', 'UMINUS'),
     ('(',')')
 

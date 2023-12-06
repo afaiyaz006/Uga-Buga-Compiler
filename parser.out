@@ -778,8 +778,6 @@ state 26
 
     +               reduce using rule 4 (expression -> expression + expression .)
     -               reduce using rule 4 (expression -> expression + expression .)
-    *               reduce using rule 4 (expression -> expression + expression .)
-    /               reduce using rule 4 (expression -> expression + expression .)
     GT              reduce using rule 4 (expression -> expression + expression .)
     LT              reduce using rule 4 (expression -> expression + expression .)
     GTE             reduce using rule 4 (expression -> expression + expression .)
@@ -790,11 +788,13 @@ state 26
     |               reduce using rule 4 (expression -> expression + expression .)
     $end            reduce using rule 4 (expression -> expression + expression .)
     )               reduce using rule 4 (expression -> expression + expression .)
+    *               shift and go to state 11
+    /               shift and go to state 12
 
+  ! *               [ reduce using rule 4 (expression -> expression + expression .) ]
+  ! /               [ reduce using rule 4 (expression -> expression + expression .) ]
   ! +               [ shift and go to state 9 ]
   ! -               [ shift and go to state 10 ]
-  ! *               [ shift and go to state 11 ]
-  ! /               [ shift and go to state 12 ]
   ! GT              [ shift and go to state 13 ]
   ! LT              [ shift and go to state 14 ]
   ! GTE             [ shift and go to state 15 ]
@@ -823,8 +823,6 @@ state 27
 
     +               reduce using rule 5 (expression -> expression - expression .)
     -               reduce using rule 5 (expression -> expression - expression .)
-    *               reduce using rule 5 (expression -> expression - expression .)
-    /               reduce using rule 5 (expression -> expression - expression .)
     GT              reduce using rule 5 (expression -> expression - expression .)
     LT              reduce using rule 5 (expression -> expression - expression .)
     GTE             reduce using rule 5 (expression -> expression - expression .)
@@ -835,11 +833,13 @@ state 27
     |               reduce using rule 5 (expression -> expression - expression .)
     $end            reduce using rule 5 (expression -> expression - expression .)
     )               reduce using rule 5 (expression -> expression - expression .)
+    *               shift and go to state 11
+    /               shift and go to state 12
 
+  ! *               [ reduce using rule 5 (expression -> expression - expression .) ]
+  ! /               [ reduce using rule 5 (expression -> expression - expression .) ]
   ! +               [ shift and go to state 9 ]
   ! -               [ shift and go to state 10 ]
-  ! *               [ shift and go to state 11 ]
-  ! /               [ shift and go to state 12 ]
   ! GT              [ shift and go to state 13 ]
   ! LT              [ shift and go to state 14 ]
   ! GTE             [ shift and go to state 15 ]
@@ -866,6 +866,8 @@ state 28
     (14) expression -> expression . & expression
     (15) expression -> expression . | expression
 
+    +               reduce using rule 6 (expression -> expression * expression .)
+    -               reduce using rule 6 (expression -> expression * expression .)
     *               reduce using rule 6 (expression -> expression * expression .)
     /               reduce using rule 6 (expression -> expression * expression .)
     GT              reduce using rule 6 (expression -> expression * expression .)
@@ -878,11 +880,9 @@ state 28
     |               reduce using rule 6 (expression -> expression * expression .)
     $end            reduce using rule 6 (expression -> expression * expression .)
     )               reduce using rule 6 (expression -> expression * expression .)
-    +               shift and go to state 9
-    -               shift and go to state 10
 
-  ! +               [ reduce using rule 6 (expression -> expression * expression .) ]
-  ! -               [ reduce using rule 6 (expression -> expression * expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
   ! *               [ shift and go to state 11 ]
   ! /               [ shift and go to state 12 ]
   ! GT              [ shift and go to state 13 ]
@@ -911,6 +911,8 @@ state 29
     (14) expression -> expression . & expression
     (15) expression -> expression . | expression
 
+    +               reduce using rule 7 (expression -> expression / expression .)
+    -               reduce using rule 7 (expression -> expression / expression .)
     *               reduce using rule 7 (expression -> expression / expression .)
     /               reduce using rule 7 (expression -> expression / expression .)
     GT              reduce using rule 7 (expression -> expression / expression .)
@@ -923,11 +925,9 @@ state 29
     |               reduce using rule 7 (expression -> expression / expression .)
     $end            reduce using rule 7 (expression -> expression / expression .)
     )               reduce using rule 7 (expression -> expression / expression .)
-    +               shift and go to state 9
-    -               shift and go to state 10
 
-  ! +               [ reduce using rule 7 (expression -> expression / expression .) ]
-  ! -               [ reduce using rule 7 (expression -> expression / expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
   ! *               [ shift and go to state 11 ]
   ! /               [ shift and go to state 12 ]
   ! GT              [ shift and go to state 13 ]
