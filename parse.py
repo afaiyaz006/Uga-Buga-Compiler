@@ -7,7 +7,7 @@ precedence = (
     ('left', '+', '-'),
     ('left', '/', '*'),
     ('right', 'UMINUS'),
-    ('(',')')
+    ('nonassoc','(',')'),  # Nonassociative precedence for parentheses
 
 )
 

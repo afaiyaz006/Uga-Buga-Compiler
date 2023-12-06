@@ -1,7 +1,2 @@
-a HOCCHE 10
-b HOCCHE 30
-c HOCCHE a+b
-x HOCCHE 10
-y HOCCHE 10*2+4/3+5
-z HOCCHE 40-y
-p HOCCHE y+z
+a HOCCHE 2+3+4*(5+3*2)/3+(5+3/2)*2
+b HOCCHE 2+3*a+20
