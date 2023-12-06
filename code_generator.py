@@ -12,7 +12,7 @@ def generate_tac(node):
        
         generate_tac.temp_counter += 1
             
-        if op=="EQUAX":
+        if op=="EQUAL":
             #print(f"{temp} = {right}")
             #print(f"{left} = {temp}")
             
