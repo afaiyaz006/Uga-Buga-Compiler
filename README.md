@@ -2,11 +2,11 @@
 
 A simple compiler that converts mathematical expression like this:
 ```
-a=10
-b=20
-c=a+b
-d=c*3
-e=d/3
+a HOCCHE 10
+b HOCCHE 20
+c HOCCHE a+b
+d HOCCHE c*3
+e HOCCHE d/3
 ```
 Into 8086 assembly code like this:
 ```
