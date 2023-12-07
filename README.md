@@ -44,4 +44,5 @@ MOV BX,3
 DIV BL
 MOV word t10,AX
 ```
+This code is completely executable in this [8086_Emulator](https://yjdoc2.github.io/8086-emulator-web/)
 It is my final project for compiler course and built for educational purpose only.It is buggy and incomplete.
